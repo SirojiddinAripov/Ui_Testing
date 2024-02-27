@@ -11,11 +11,18 @@ import com.aripov.unittesting_ui_elements.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var binding: ActivityMainBinding
+    private var usersList: ArrayList<User> = ArrayList<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.btnSubmit.setOnClickListener(this)
+
+        usersList.add(
+            User("taken@email.com",
+                "takenEmail12")
+        )
     }
 
     override fun onClick(view: View?) {
@@ -26,7 +33,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     val intent = Intent(this, AfterLogin::class.java)
                     intent.putExtra("user", user)
                     startActivity(intent)
-                    finish()
                 }
             }
         }
