@@ -13,6 +13,9 @@
         android:theme="@style/Theme.UnitTesting_UI_Elements"
         tools:targetApi="31">
         <activity
+            android:name=".AfterLogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
