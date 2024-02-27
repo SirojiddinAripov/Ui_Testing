@@ -27,6 +27,14 @@ class UserTest {
     fun `invalid password creation of user throws exception`() {
         assertThrows<IllegalArgumentException> {
             val email = "example"
+            val password = "eeeeeeee"
+            User(email, password).showUserInfo()
+        }
+    }
+    @Test
+    fun `empty information of user throws exception`() {
+        assertThrows<IllegalArgumentException> {
+            val email = ""
             val password = ""
             User(email, password).showUserInfo()
         }
