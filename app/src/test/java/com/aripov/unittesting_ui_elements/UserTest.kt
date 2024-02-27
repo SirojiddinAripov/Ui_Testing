@@ -1,8 +1,6 @@
 package com.aripov.unittesting_ui_elements
 
 import com.google.common.truth.Truth.assertThat
-import org.junit.Assert.*
-
 import org.junit.Test
 import org.junit.jupiter.api.assertThrows
 
