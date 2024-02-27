@@ -11,7 +11,7 @@ import com.aripov.unittesting_ui_elements.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var binding: ActivityMainBinding
-    private var usersList: ArrayList<User> = ArrayList<User>()
+    private var takenEmails: ArrayList<String> = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,20 +19,19 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         binding.btnSubmit.setOnClickListener(this)
 
-        usersList.add(
-            User("taken@email.com",
-                "takenEmail12")
-        )
+        takenEmails.add("taken@email.com")
     }
 
     override fun onClick(view: View?) {
         when(view?.id) {
             R.id.btnSubmit -> {
                 val user = attemptToCreateUser()
-                if(user != null) {
+                if(user != null && user.email !in takenEmails ) {
                     val intent = Intent(this, AfterLogin::class.java)
                     intent.putExtra("user", user)
                     startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "Email taken.", Toast.LENGTH_SHORT).show()
                 }
             }
         }

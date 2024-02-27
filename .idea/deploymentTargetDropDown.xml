@@ -2,7 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MainActivityTester">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="creatingUniqueUser_passes()">
+        <State />
+      </entry>
+      <entry key="testLogin_IncorrectEmail()">
+        <State />
+      </entry>
+      <entry key="testLogin_ProperInformation()">
         <State />
       </entry>
     </value>

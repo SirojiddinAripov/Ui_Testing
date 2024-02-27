@@ -4,7 +4,7 @@ import java.io.Serializable
 
 
 class User (
-    private val email: String,
+    val email: String,
     private var password: String
 ): Serializable {
     init {
