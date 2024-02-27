@@ -1,6 +1,7 @@
 package com.aripov.unittesting_ui_elements
 
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,12 +27,15 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         when(view?.id) {
             R.id.btnSubmit -> {
                 val user = attemptToCreateUser()
-                if(user != null && user.email !in takenEmails ) {
-                    val intent = Intent(this, AfterLogin::class.java)
-                    intent.putExtra("user", user)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(applicationContext, "Email taken.", Toast.LENGTH_SHORT).show()
+                if (user != null){
+                    if (user.email !in takenEmails) {
+                        binding.tvError.visibility = View.GONE
+                        val intent = Intent(this, AfterLogin::class.java)
+                        intent.putExtra("user", user)
+                        startActivity(intent)
+                    } else {
+                        displayErrorToUser("Email is already taken.")
+                    }
                 }
             }
         }
@@ -42,12 +46,17 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         val password = binding.etPassword.text.toString()
 
         if(!UserInfoValidator.isValidEmail(email)){
-            Toast.makeText(applicationContext, "Invalid email.", Toast.LENGTH_SHORT).show()
+            displayErrorToUser("Invalid email.")
             return null
         } else if(!UserInfoValidator.isValidPassword(password)) {
-            Toast.makeText(applicationContext, "Invalid password.", Toast.LENGTH_SHORT).show()
+            displayErrorToUser("Invalid password.")
             return null
         }
         return User(email, password)
+    }
+
+    private fun displayErrorToUser(errorMessage: String){
+        binding.tvError.visibility = View.VISIBLE
+        binding.tvError.text = errorMessage
     }
 }

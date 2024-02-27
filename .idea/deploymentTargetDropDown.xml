@@ -17,6 +17,9 @@
       <entry key="testLogin_ProperInformation()">
         <State />
       </entry>
+      <entry key="testLogin_TakenEmailAddress()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
