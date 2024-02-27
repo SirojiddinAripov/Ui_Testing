@@ -9,6 +9,10 @@ class AfterLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAfterLoginBinding.inflate(layoutInflater)
-        binding.tvMain.text = "My Text"
+        setContentView(binding.root)
+        if(intent != null) {
+            val user: User = intent.getSerializableExtra("user") as User
+            binding.tvMain.text = user.showUserInfo()
+        }
     }
 }

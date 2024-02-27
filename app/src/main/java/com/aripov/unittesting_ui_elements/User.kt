@@ -1,10 +1,12 @@
 package com.aripov.unittesting_ui_elements
 
+import java.io.Serializable
+
 
 class User (
     private val email: String,
     private var password: String
-){
+): Serializable {
     init {
         require(UserInfoValidator.isValidEmail(email)) {
             "Invalid email address provided."
